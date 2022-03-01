@@ -1,5 +1,7 @@
 # FORDM
 
+O projeto FOR DONATION MANAGER é um software que administra as doações para as instituições de caridade.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
 
 ## Development server
