@@ -1,0 +1,28 @@
+<nb-layout-column>
+
+  <nb-alert *ngIf="dadosEnviados == 1" status="success" closable (close)="onClose()">
+    Cadastrado com sucesso!
+  </nb-alert>
+
+
+  <form #form="ngForm" [formGroup]="cadForm" (submit)="registro()">
+    <div class="form-control-group" style="text-align: center;">
+      <table width="90%">
+        <h1 class="title" style="margin-top: 50px;">Registro do Produto</h1>
+        <input type="text" fullWidth nbInput shape="semi-round" placeholder="Nome" status="info" formControlName="nome"
+          style="margin-top: 20px; border: 1px solid #2ee56b;">
+        <small *ngIf="cadForm.get('nome').errors?.required && (form.submitted || cadForm.get('nome').touched)" class="text-danger d-block mt-2">Campo
+          Obrigatório!
+        </small>
+        <input type="text" fullWidth nbInput shape="semi-round" placeholder="Categoria" formControlName="categoria"
+          status="info" style="margin-top: 20px; border: 1px solid #2ee56b;">
+        <small *ngIf="cadForm.get('categoria').errors?.required && (form.submitted || cadForm.get('categoria').touched)"
+          class="text-danger d-block mt-2">Campo Obrigatório!
+        </small>
+        <button type="submit" nbButton outline status="success" shape="round" size="medium" onmouseout="this.style.color='#000'"
+          style="margin-top: 20px">Registrar</button>
+      </table>
+      <br />
+    </div>
+  </form>
+</nb-layout-column>

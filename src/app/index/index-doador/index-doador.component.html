@@ -1,0 +1,29 @@
+<nb-layout>
+
+  <nb-layout-header subheader>
+    <a href="#" (click)="toggle()"><i class="fas fa-xs fa-bars green"></i></a>
+    <hr size="100" width="1">
+    <nb-user class="floatR" style="margin-right: 20px" size="small" [name]="name" title="Doador">
+    </nb-user>
+    <a href="#" (click)="logOut()" title="Sair"><i class="fas fa-sign-out-alt green floatR"></i></a>
+  </nb-layout-header>
+
+  <nb-sidebar>
+    <img src="../../../assets/img/logo.png" alt="" class="col-xl-12">
+    <nb-menu [items]="items">
+    </nb-menu>
+
+  </nb-sidebar>
+
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-body>
+        <router-outlet></router-outlet>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+  <nb-layout-footer style="text-align: center;">
+          © 2018 Copyright 4DM <br />
+          Todos os direitos reservados
+  </nb-layout-footer>
+</nb-layout>

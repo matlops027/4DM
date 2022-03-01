@@ -1,0 +1,10 @@
+.scrollit {
+    overflow:scroll;
+    height: 400px;
+    border: 1px solid #000;
+}
+.fcus:active, .fcus:hover, .fcus:focus {
+    outline: none;
+    border: 1px solid #2ee56b;
+    box-shadow: 0 0 10px 100px #fff inset;
+}

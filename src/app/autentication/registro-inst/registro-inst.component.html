@@ -1,0 +1,93 @@
+<nb-alert *ngIf="dadosEnviados == 1" status="success" closable (close)="onClose()">
+  Registrado com sucesso!
+</nb-alert>
+
+<nb-alert *ngIf="msgErro1 == 1" status="danger" closable (close)="onClose()">
+  Instituição já cadastrada!
+</nb-alert>
+
+<nb-alert *ngIf="msgErro2 == 1" status="danger" closable (close)="onClose()">
+  A senha deve ter no minimo 6 dígitos!
+</nb-alert>
+
+<nb-alert *ngIf="msgErro3 == 1" status="danger" closable (close)="onClose()">
+  CNPJ Invalido!
+</nb-alert>
+
+<nb-alert *ngIf="msgErro4 == 1" status="danger" closable (close)="onClose()">
+  CEP Invalido!
+</nb-alert>
+
+<h1 class="title" style="margin-top: 50px">Registro Instituição</h1>
+<form #form="ngForm" [formGroup]="instForm" (submit)="register()">
+  <div class="form-control-group" style="text-align:center">
+    <table width="100%">
+    <tr>
+        <td width="49%">
+          <input type="text" nbInput fullWidth shape="semi-round" placeholder="Nome" formControlName="nome" status="info" style="margin-top: 20px; border: 1px solid #2ee56b">
+          <small *ngIf="instForm.get('nome').errors?.required && (form.submitted || instForm.get('nome').touched)"
+            class="text-danger d-block mt-2">Campo
+            Obrigatório!
+          </small>
+
+          <input type="text" nbInput fullWidth shape="semi-round" placeholder="Proprietário" formControlName="proprietario"
+            status="info" style="margin-top: 20px; border: 1px solid #2ee56b">
+          <small *ngIf="instForm.get('proprietario').errors?.required && (form.submitted || instForm.get('proprietario').touched)"
+            class="text-danger d-block mt-2">Campo Obrigatório!
+          </small>
+
+          <input type="text" nbInput fullWidth shape="semi-round" placeholder="CNPJ" maxlength="14" formControlName="cnpj"
+            status="info" style="margin-top: 20px; border: 1px solid #2ee56b">
+          <small *ngIf="instForm.get('cnpj').errors?.required && (form.submitted || instForm.get('cnpj').touched)"
+            class="text-danger d-block mt-2">Campo
+            Obrigatório!
+          </small>
+
+          <input type="text" nbInput fullWidth shape="semi-round" placeholder="CEP" maxlength="8" formControlName="cep"
+      status="info" style="margin-top: 20px; border: 1px solid #2ee56b">
+    <small *ngIf="instForm.get('cep').errors?.required && (form.submitted || instForm.get('cep').touched)" class="text-danger d-block mt-2">Campo
+      Obrigatório!
+    </small>
+        </td>
+        <td width="2%"></td>
+        <td>
+          <input type="text" nbInput fullWidth shape="semi-round" placeholder="Email" status="info" formControlName="email"
+            style="margin-top: 20px; border: 1px solid #2ee56b">
+          <small *ngIf="instForm.get('email').errors?.required && (form.submitted || instForm.get('email').touched)"
+            class="text-danger d-block mt-2">Campo
+            Obrigatório!
+          </small>
+          <small *ngIf="instForm.get('email').errors?.email && (form.submitted || instForm.get('email').touched)" class="text-danger d-block mt-2">Email
+            Invalido!
+          </small>
+
+          <input type="password" nbInput fullWidth shape="semi-round" placeholder="Senha" formControlName="password"
+            status="info" style="margin-top: 20px; border: 1px solid #2ee56b">
+          <small *ngIf="instForm.get('password').errors?.required && (form.submitted || instForm.get('password').touched)"
+            class="text-danger d-block mt-2">Campo Obrigatório!
+          </small>
+
+          <input type="text" nbInput fullWidth shape="semi-round" placeholder="Celular" maxlength="10"
+            formControlName="contato" status="info" style="margin-top: 20px; border: 1px solid #2ee56b">
+          <small *ngIf="instForm.get('contato').errors?.required && (form.submitted || instForm.get('contato').touched)"
+            class="text-danger d-block mt-2">Campo Obrigatório!
+          </small>
+
+          <input type="text" nbInput fullWidth shape="semi-round" placeholder="Número" formControlName="num" status="info"
+            style="margin-top: 20px; border: 1px solid #2ee56b">
+          <small *ngIf="instForm.get('num').errors?.required && (form.submitted || instForm.get('num').touched)" class="text-danger d-block mt-2">Campo
+            Obrigatório!
+          </small>
+        </td>
+      </tr>
+    </table>
+
+    <input type="text" nbInput fullWidth shape="semi-round" placeholder="Razão Social" formControlName="razaoS" status="info"
+      style="margin-top: 20px; border: 1px solid #2ee56b">
+    <small *ngIf="instForm.get('razaoS').errors?.required && (form.submitted || instForm.get('razaoS').touched)" class="text-danger d-block mt-2">Campo
+      Obrigatório!
+    </small>
+  
+    <button type="submit" nbButton outline fullWidth status="success" style="margin-top: 20px">Registrar</button>
+  </div>
+</form>

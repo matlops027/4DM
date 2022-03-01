@@ -1,0 +1,9 @@
+:host nb-layout-column {
+    height: 100%;
+  }
+  :host
+  {
+    justify-content: center;
+    align-content: center;
+  }
+  

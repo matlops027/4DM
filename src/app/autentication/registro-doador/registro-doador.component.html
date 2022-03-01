@@ -1,0 +1,101 @@
+<nb-layout>
+    <nb-layout-column>
+        <nb-card>
+            <nb-card-body style="text-align: center; width: 1000px;">
+                <nb-alert *ngIf="dadosEnviados == 1" status="success" closable (close)="onClose()">
+                    Registrado com sucesso!
+                </nb-alert>
+
+                <nb-alert *ngIf="msgErro1 == 1" status="danger" closable (close)="onClose()">
+                    Doador já cadastrado!
+                </nb-alert>
+
+                <nb-alert *ngIf="msgErro2 == 1" status="danger" closable (close)="onClose()">
+                    A senha deve ter no minimo 6 dígitos!
+                </nb-alert>
+
+                <nb-alert *ngIf="msgErro3 == 1" status="danger" closable (close)="onClose()">
+                    CPF Invalido!
+                </nb-alert>
+
+                <nb-alert *ngIf="msgErro4 == 1" status="danger" closable (close)="onClose()">
+                    CEP Invalido!
+                </nb-alert>
+                <a href="#"><i class="fas fa-lg fa-arrow-left"  style="float: left; margin-top: 20px;"></i></a>
+                <h1 class="title" style="margin-top: 50px">Preencha o formulário e torne-se um doador!</h1>
+                <form #form="ngForm" [formGroup]="registroDoador" (submit)="register()">
+                    <div class="form-control-group">
+                        <table width="100%">
+                            <tr>
+                                <td width="49%">
+                                    <input type="text" fullWidth nbInput shape="semi-round" placeholder="Nome"
+                                        formControlName="nome" status="info" style="margin-top: 20px; border: 1px solid #2ee56b;">
+                                    <small *ngIf="registroDoador.get('nome').errors?.required && (form.submitted || registroDoador.get('nome').touched)"
+                                        class="text-danger d-block mt-2">Campo Obrigatório!
+                                    </small>
+
+                                    <input type="text" fullWidth nbInput shape="semi-round" placeholder="Email" status="info"
+                                        formControlName="email" style="margin-top: 20px; border: 1px solid #2ee56b;">
+                                    <small *ngIf="registroDoador.get('email').errors?.required && (form.submitted || registroDoador.get('email').touched)"
+                                        class="text-danger d-block mt-2">Campo Obrigatório!
+                                    </small>
+                                    <small *ngIf="registroDoador.get('email').errors?.email && (form.submitted || registroDoador.get('email').touched)"
+                                        class="text-danger d-block mt-2">Email Invalido!
+                                    </small>
+
+                                    <input type="text" fullWidth nbInput shape="semi-round" placeholder="Telefone"
+                                    maxlength="10" formControlName="telefone" status="info" style="margin-top: 20px; border: 1px solid #2ee56b;">
+
+                                    <input type="text" fullWidth nbInput shape="semi-round" placeholder="CEP" maxlength="8"
+                                formControlName="cep" status="info" style="margin-top: 20px; border: 1px solid #2ee56b;">
+                            <small *ngIf="registroDoador.get('cep').errors?.required && (form.submitted || registroDoador.get('cep').touched)"
+                                class="text-danger d-block mt-2">Campo Obrigatório!
+                            </small>
+
+                            <input type="text" fullWidth nbInput shape="semi-round" placeholder="CPF" maxlength="11"
+                                formControlName="cpf" status="info" style="margin-top: 20px; border: 1px solid #2ee56b;">
+                            <small *ngIf="registroDoador.get('cpf').errors?.required && (form.submitted || registroDoador.get('cpf').touched)"
+                                class="text-danger d-block mt-2">Campo Obrigatório!
+                            </small>
+                                </td>
+                                <td width="2%"></td>
+                                <td>
+                                    <input type="text" fullWidth nbInput shape="semi-round" placeholder="Sobrenome"
+                                        formControlName="sobrenome" status="info" style="margin-top: 20px; border: 1px solid #2ee56b;">
+                                    <small *ngIf="registroDoador.get('sobrenome').errors?.required && (form.submitted || registroDoador.get('sobrenome').touched)"
+                                        class="text-danger d-block mt-2">Campo Obrigatório!
+                                    </small>
+
+                                    <input type="password" fullWidth nbInput shape="semi-round" placeholder="Senha"
+                                        formControlName="password" status="info" style="margin-top: 20px; border: 1px solid #2ee56b;">
+                                    <small *ngIf="registroDoador.get('password').errors?.required && (form.submitted || registroDoador.get('password').touched)"
+                                        class="text-danger d-block mt-2">Campo Obrigatório!
+                                    </small>
+
+                                    <input type="text" fullWidth nbInput shape="semi-round" placeholder="Celular"
+                                        maxlength="10" formControlName="celular" status="info" style="margin-top: 20px; border: 1px solid #2ee56b;">
+                                    <small *ngIf="registroDoador.get('celular').errors?.required && (form.submitted || registroDoador.get('celular').touched)"
+                                        class="text-danger d-block mt-2">Campo Obrigatório!
+                                    </small>
+
+                                <input type="text" fullWidth nbInput shape="semi-round" placeholder="Número"
+                                formControlName="num" status="info" style="margin-top: 20px; border: 1px solid #2ee56b;">
+                            <small *ngIf="registroDoador.get('num').errors?.required && (form.submitted || registroDoador.get('num').touched)"
+                                class="text-danger d-block mt-2">Campo Obrigatório!
+                            </small>
+
+                            <input type="date" fullWidth nbInput shape="semi-round" placeholder="Data de Nascimento" formControlName="data" style="margin-top: 20px; color: #00000056">
+                            <small *ngIf="registroDoador.get('data').errors?.required && (form.submitted || registroDoador.get('data').touched)"
+                                class="text-danger d-block mt-2">Campo Obrigatório!
+                            </small>
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <button type="submit" nbButton outline status="success" shape="round" size="medium" onMouseOver="this.style.color='#fff'" onmouseout="this.style.color='#2ee56b'" style="margin-top: 20px; color: #2ee56b;">Registrar</button>
+                    </div>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </nb-layout-column>
+</nb-layout>

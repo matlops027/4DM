@@ -1,0 +1,44 @@
+:host nb-layout-header a {
+    font-size: 2rem;
+    text-decoration: none;
+  }
+
+  :host nb-layout-column {
+    height: 100%;
+  }
+  :host nb-layout-column:first-child {
+    background: #f4f4f7;
+  }
+  @media only screen and (maX-width: 815px) {
+    /* For desktop: */
+    :host nb-layout-column {height: 80vw;}
+  }
+  .green{
+      color: #2ee56b;
+  }
+  :host nb-layout-header{
+      border: 1px solid #2ee56b;
+      background: #eee;
+  }
+  :host nb-sidebar{
+    border: 1px solid #2ee56b;
+    }
+  :host nb-layout-column {
+        border: 1px solid #2ee56b;
+    }
+    :host nb-layout-footer {
+        border: 1px solid #2ee56b;
+    }
+    .floatR {
+        float: right;
+    }
+    .Mrgin{
+        margin-right: 20px;
+    }
+    :host nb-menu{
+        color: #2ee56b;
+    }
+    :host nb-card {
+        text-align: center;
+        border: 1px solid #2ee56b;
+    }

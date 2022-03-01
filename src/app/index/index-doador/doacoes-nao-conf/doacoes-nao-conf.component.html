@@ -1,0 +1,48 @@
+<div *ngIf="exibir == 1">
+    <nb-alert *ngIf="alerta == 1" status="warning">Nada para exibir</nb-alert>
+    <h3 class="text-center">Doações</h3>
+    <div class="form-group row">
+      <div class="col-sm-1"></div>
+    </div>
+    <div class="scrollit">
+      <table class="table">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Email Doador</th>
+            <th>Instituição</th>
+            <th>Data</th>
+            <th>Produtos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doacao of doacoesFiltro">
+            <th scope="row">{{doacao.email_doador}}</th>
+            <td>{{doacao.instituicao}}</td>
+            <td>{{doacao.data}}</td>
+            <td><button nbButton outline status="success" shape="round" size="xsmall" onMouseOver="this.style.color='#fff'" onmouseout="this.style.color='#000'" style="color: #000;" (click)="mostra(doacao)">MOSTRAR MAIS</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  
+  <div *ngIf="exibir == 2">
+        <div class="scrollit">
+          <table class="table">
+            <thead class="thead-inverse">
+              <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prod of filtroProd">
+                <th scope="row">{{prod.nome}}</th>
+                <td>{{prod.quantidade}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button nbButton outline status="success" shape="round" size="medium" onMouseOver="this.style.color='#fff'" onmouseout="this.style.color='#000'" style="color: #000;" (click)="volta()">VOLTAR</button>
+    </div>

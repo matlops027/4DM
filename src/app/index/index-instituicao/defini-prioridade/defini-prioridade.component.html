@@ -1,0 +1,68 @@
+<nb-layout-column>
+
+  <nb-alert *ngIf="dadosEnviados == 1" status="success" closable (close)="onClose()">
+    Produtos adicionados com sucesso!
+  </nb-alert>
+  <nb-alert *ngIf="msgErro == 1" status="danger" closable (close)="onClose()">
+    Produtos já adicionado!
+  </nb-alert>
+  <h1 class="text-center" style="margin-top: 20px">
+    Adicionar produtos como prioridade
+  </h1>
+  <br />
+  <h3 class="text-center">
+    Pesquisa de produtos</h3>
+  <div class="form-group row align-center">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <input type="text" class="form-control fcus" placeholder="Buscar pelo produto" (input)="buscaNome($event)">
+
+    </div>
+  </div>
+
+  <div class="scrollit">
+    <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Produto</th>
+          <th>Categoria</th>
+          <th>Adicionar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtosFiltro">
+          <th scope="row">{{produto.nome}}</th>
+          <td>{{produto.categoria}}</td>
+          <td><button type="button" nbButton outline status="success" shape="round" size="xsmall" onmouseout="this.style.color='#000'"
+              (click)="addProduto(produto)">Adicionar</button></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br />
+  <h3>Produtos adicionados</h3>
+  <div class="scrollit">
+    <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Produto</th>
+          <th>Categoria</th>
+          <th>Excluir</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtosCarrinho">
+          <th scope="row">{{produto.nome}}</th>
+          <td>{{produto.categoria}}</td>
+          <td><button type="button" nbButton outline status="success" shape="xsmall" size="medium" onmouseout="this.style.color='#000'"
+              (click)="excluirProduto(produto)">Excluir</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <td><button type="button" nbButton outline status="success" shape="round" size="medium" onmouseout="this.style.color='#000'"
+      (click)="finalizar()">Finalizar</button></td>
+</nb-layout-column>

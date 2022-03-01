@@ -1,0 +1,39 @@
+<div *ngIf="exibir == 1">
+  <h3 class="text-center">Doações</h3>
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Instituicao</th>
+        <th>Email Doador</th>
+        <th>Data</th>
+        <th>Produtos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let doacao of doacoesFiltro">
+        <th scope="row">{{doacao.instituicao}}</th>
+        <td>{{doacao.email_doador}}</td>
+        <td>{{doacao.data}}</td>
+        <td><button nbButton outline status="success" shape="round" size="xsmall" onmouseout="this.style.color='#000'" (click)="mostra(doacao)">MOSTRAR MAIS</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="exibir == 2">
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Produto</th>
+        <th>Quantidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prod of filtroProd">
+        <th scope="row">{{prod.nome}}</th>
+        <td>{{prod.quantidade}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button nbButton outline status="success" shape="round" size="medium" onmouseout="this.style.color='#000'" (click)="volta()">VOLTAR</button>
+</div>

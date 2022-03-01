@@ -1,0 +1,42 @@
+:host nb-layout-header a {
+    font-size: 2rem;
+    text-decoration: none;
+  }
+  :host nb-layout-column {
+    height: 40vw;
+    text-align: center;
+  }
+  :host nb-layout-column:first-child {
+    background: #eee;
+  }
+  @media only screen and (max-width: 812px) {
+    /* For desktop: */
+    :host nb-layout-column {height: 100vw;}
+  }
+
+  .base{
+    margin-top: 0%;
+}
+.title{
+    color: #000;
+    font-size: 30px;
+}
+:host nb-card{
+    border: 1px solid #000;
+}
+.container{
+    text-align: left;
+    margin-top: 0%;
+}
+.floatR {
+    float: right;
+}
+.Mrgin{
+    margin-right: 20px;
+}
+.green {
+    border: 1px solid #2ee56b;
+}
+:host status .success {
+    color: #2ee56b;
+}

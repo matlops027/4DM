@@ -1,0 +1,39 @@
+  <nb-alert *ngIf="dadosEnviados == 1" status="success" closable (close)="onClose()">
+    Registrado com sucesso!
+  </nb-alert>
+
+  <nb-alert *ngIf="msgErro1 == 1" status="danger" closable (close)="onClose()">
+    Administrador já cadastrado!
+  </nb-alert>
+
+  <nb-alert *ngIf="msgErro2 == 1" status="danger" closable (close)="onClose()">
+    A senha deve ter no minimo 6 dígitos!
+  </nb-alert>
+
+  <nb-alert *ngIf="msgErro3 == 1" status="danger" closable (close)="onClose()">
+    Email de administrador incorreto!
+  </nb-alert>
+  
+  <form #form="ngForm" [formGroup]="admForm" (submit)="registro()">
+    <div class="form-control-group" style="text-align:center">
+      <table width="90%">
+          <h1 class="title" style="margin-top: 50px">Registro Administrador</h1>
+          <br />
+      <input type="text" nbInput fullWidth shape="semi-round" placeholder="Email" status="info" formControlName="email" style="border: 1px solid #2ee56b;">
+      <small *ngIf="admForm.get('email').errors?.required && (form.submitted || admForm.get('email').touched)" class="text-danger d-block mt-2">Campo
+        Obrigatório!
+      </small>
+      <small *ngIf="admForm.get('email').errors?.email && (form.submitted || admForm.get('email').touched)" class="text-danger d-block mt-2">Email
+        Invalido!
+      </small>
+      <input type="password" nbInput fullWidth shape="semi-round" placeholder="Senha" formControlName="password"
+        status="info" style="margin-top: 20px; border: 1px solid #2ee56b;">
+      <small *ngIf="admForm.get('password').errors?.required && (form.submitted || admForm.get('password').touched)"
+        class="text-danger d-block mt-2">Campo Obrigatório!
+      </small>
+      <tr style="text-align: center;">
+      <button type="submit" nbButton outline status="success" shape="round" size="medium" style="margin-top: 20px;">Registrar</button>
+      </tr>
+    </table>
+    </div>
+  </form>

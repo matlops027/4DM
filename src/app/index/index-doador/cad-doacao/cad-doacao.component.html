@@ -1,0 +1,94 @@
+<nb-layout-column>
+<div *ngIf="exibir == 1">
+  <nb-alert *ngIf="dadosEnviados == 1" status="success" closable (close)="onClose()">
+    Doação realizada com sucesso!
+  </nb-alert>
+  <nb-alert *ngIf="msgErro == 1" status="danger" closable (close)="onClose()">
+    Insira Instituição!
+  </nb-alert>
+  <nb-alert *ngIf="msgErro2 == 1" status="danger" closable (close)="onClose()">
+    Insira Produtos!
+  </nb-alert>
+  <h3 class="text-center" style="margin-top: 20px">
+
+    Registrar Doação</h3>
+
+  <div class="form-group row">
+    <label for="inputInst" class="col-sm-2 col-form-label">Instituição:</label>
+    <div class="form-group col-md-10">
+      <select class="form-control fcus" name="inst" (click)="atualizarInst($event)">
+        <option *ngFor="let inst of insts" [value]="inst.email"> {{inst.nome}}</option>
+        <option value="" selected="selected" hidden="hidden"></option>
+      </select>
+    </div>
+  </div>
+  <button style="float:left; color: #000;" nbButton outline status="success" shape="round" size="small" onMouseOver="this.style.color='#fff'" onmouseout="this.style.color='#000'" (click)="mostra()">Produtos em prioridade da Instituição</button>
+  <div class="form-group row align-center">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <input type="text" class="form-control fcus" placeholder="Buscar pelo produto" (input)="buscaNome($event)">
+    </div>
+  </div>
+
+  <div class="scrollit">
+    <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Produto</th>
+          <th>Categoria</th>
+          <th>Adicionar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtosFiltro">
+          <th scope="row">{{produto.nome}}</th>
+          <td>{{produto.categoria}}</td>
+          <td><button type="button" nbButton outline status="success" shape="round" size="xsmall" onMouseOver="this.style.color='#fff'" onmouseout="this.style.color='#000'" style="color: #000;" (click)="addProduto(produto)">Adicionar</button></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <h3>Produtos Doados</h3>
+  <div class="scrollit">
+    <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Produto</th>
+          <th>Categoria</th>
+          <th>Excluir</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtosCarrinho">
+          <th scope="row">{{produto.nome}}</th>
+          <td>{{produto.categoria}}</td>
+          <td><button type="button" nbButton outline status="success" shape="round" size="xsmall" onMouseOver="this.style.color='#fff'" onmouseout="this.style.color='#000'" style="color: #000;" (click)="excluirProduto(produto)">Excluir</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <td><button type="button" nbButton outline status="success" shape="semi-round" size="small" onMouseOver="this.style.color='#fff'" onmouseout="this.style.color='#000'" style="margin-top: 20px; color: #000;" (click)="finalizarDoacao()">Finalizar Doação</button></td>
+</div>
+<div *ngIf="exibir == 2">
+  <div class="scrollit">
+    <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Produto</th>
+          <th>Categoria</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtosPFiltro">
+          <th scope="row">{{produto.nome}}</th>
+          <td>{{produto.categoria}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button nbButton outline status="success" shape="round" size="medium" onMouseOver="this.style.color='#fff'" onmouseout="this.style.color='#000'" style="color: #000;" (click)="volta()">VOLTAR</button>
+</div>
+</nb-layout-column>

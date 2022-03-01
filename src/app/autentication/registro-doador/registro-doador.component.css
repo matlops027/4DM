@@ -1,0 +1,31 @@
+:host nb-layout-header a {
+    font-size: 2rem;
+    text-decoration: none;
+  }
+  :host nb-layout-column {
+    height: 100%;
+    background-color: #f4f4f7;
+  }
+  :host {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    background-color: #f4f4f7;
+  }
+  :host nb-card{
+    border: 1px solid #000;
+  }
+  :host input {
+    width: 21.875rem;
+  }
+  :host nb-card-body {
+    text-align: center;
+  }
+  [nbButton] {
+    margin-right: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  :host input {
+    border: 1px solid #2ee56b;
+  }

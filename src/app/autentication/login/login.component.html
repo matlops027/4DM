@@ -1,0 +1,64 @@
+<nb-layout>
+    <nb-layout-column>
+        <nb-card>
+            <table style="margin: 30px 40px 30px 0px;">
+                <tr>
+                    <td>
+                        <nb-card-body class="container">
+                            <img width="780" src="../../assets/img/logo.png" class="img-fluid rounded" alt="logo">
+                        </nb-card-body>
+                    </td>
+                    <td style="border-left: 1px solid rgb(190, 190, 190);">
+                        <div style="text-align: center; margin-left: 40px;">
+                            <nb-alert *ngIf="msgErro == 1" status="danger" closable (close)="onClose()">
+                                Usuario ou senha incorretos!
+                            </nb-alert>
+                            <nb-alert *ngIf="msgErro2 == 1" status="danger" closable (close)="onClose()">
+                                Dados incorretos!
+                            </nb-alert>
+                            <h1 class="title" style="margin-top: 50px;">Entrar</h1>
+                            <form #form="ngForm" [formGroup]="loginForm" (submit)="login()">
+                                <div class="form-control-group">
+                                    <input class="green" type="text" style="padding-right: 105px;" nbInput shape="semi-round"
+                                        placeholder="Email" status="info" formControlName="email" style="margin-top: 20px; padding-right: 105px; border: 1px solid #2ee56b;">
+                                    <small *ngIf="loginForm.get('email').errors?.required && (form.submitted || loginForm.get('email').touched)"
+                                        class="text-danger d-block mt-2">Campo Obrigatório!
+                                    </small>
+                                    <small *ngIf="loginForm.get('email').errors?.email && (form.submitted || loginForm.get('email').touched)"
+                                        class="text-danger d-block mt-2">Email Invalido!
+                                    </small>
+                                    <br />
+                                    <input type="password" nbInput shape="semi-round" placeholder="Senha"
+                                        formControlName="password" status="info" style="margin-top: 20px; padding-right: 105px; border: 1px solid #2ee56b;">
+                                    <small *ngIf="loginForm.get('password').errors?.required && (form.submitted || loginForm.get('password').touched)"
+                                        class="text-danger d-block mt-2">Campo Obrigatório!
+                                    </small>
+                                    <br />
+                                    <button type="submit" style="margin: 20px 20px 0 0;" nbButton outline status="success"
+                                        onmouseout="this.style.color='#000'">ENTRAR</button>
+                                    <button (click)="registro()" style="margin-top: 20px;" nbButton outline status="success"
+                                        onmouseout="this.style.color='#000'">REGISTRAR</button>
+                                </div>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </nb-card>
+            <table>
+                <tr>
+                    <td>
+                        Quer cadastrar uma instituição/produto? <br />
+                        Entre em contato! (34) 99128-5709
+                    </td>
+                    <td width="25%">
+                    </td>
+                    <td>
+                        © 2018 Copyright 4DM <br />
+                        Todos os direitos reservados
+                    </td>
+                </tr>
+            </table>
+    </nb-layout-column>
+
+</nb-layout>
